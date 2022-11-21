@@ -3,9 +3,7 @@ import { Friend, IFriend } from '../Friend';
 
 import { styles } from './styles';
 
-export interface FriendProps extends IFriend {
-  id: number
-}
+export interface FriendProps extends IFriend {}
 
 interface Props {
   data: FriendProps[]

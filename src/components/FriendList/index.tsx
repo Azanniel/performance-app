@@ -7,10 +7,11 @@ import { styles } from './styles';
 export interface FriendProps extends IFriend {}
 
 interface Props {
-  data: FriendProps[]
+  data: FriendProps[],
+  follow: () => void
 }
 
-export function FriendList({ data }: Props) {
+export function FriendList({ data, follow }: Props) {
   const likesAmount = useMemo(() => {
     return data.reduce((likes, friend) => {
       return likes + Number(friend.likes)
@@ -28,6 +29,7 @@ export function FriendList({ data }: Props) {
           <Friend 
             key={String(friend.id)} 
             data={friend}
+            follow={follow}
           />
         ))
       }

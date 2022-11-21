@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { ActivityIndicator, Button, Text, TextInput, View } from 'react-native';
 import { FriendList, FriendProps } from '../../components/FriendList';
 
@@ -18,6 +18,10 @@ export function Home() {
     setFriends(data);
     setIsLoading(false);
   }
+
+  const handleFollow = useCallback(() => {
+    console.log('follow user');
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -41,6 +45,7 @@ export function Home() {
 
       <FriendList
         data={friends}
+        follow={handleFollow}
       />
     </View>
   );

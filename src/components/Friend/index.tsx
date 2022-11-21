@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Text } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
 
@@ -10,14 +10,21 @@ export interface IFriend {
 }
 
 interface Props {
-  data: IFriend
+  data: IFriend,
+  follow: () => void
 }
 
-function FriendComponent({ data, ...rest }: Props) {
+function FriendComponent({ data, follow }: Props) {
   return (
-    <Text style={styles.container} {...rest}>
-      {data.name} - Likes:  {data.likes}
-    </Text>
+    <View style={styles.container}>
+      <Text style={styles.friend}>
+        {data.name} - Likes:  {data.likes}
+      </Text>
+
+      <TouchableOpacity onPress={follow}>
+        <Text style={styles.buttonText}>Deixar de seguir</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 

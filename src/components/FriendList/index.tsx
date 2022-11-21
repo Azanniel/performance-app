@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { Friend, IFriend } from '../Friend';
 
 import { styles } from './styles';
@@ -19,20 +19,16 @@ export function FriendList({ data, follow }: Props) {
   }, [data]);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.likes}>
         Total de likes: {likesAmount}
       </Text>
 
-      {
-        data.map(friend => (
-          <Friend 
-            key={String(friend.id)} 
-            data={friend}
-            follow={follow}
-          />
-        ))
-      }
-    </ScrollView>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => <Friend data={item} follow={follow} />}
+      />
+    </View>
   );
 }

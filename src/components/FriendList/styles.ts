@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   likes: {
     fontSize: 22,
     color: 'white',
-    marginHorizontal: 10,
-    textAlign: 'right'
+    marginVertical: 10,
+    textAlign: 'right',
   }
 });
